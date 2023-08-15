@@ -1,6 +1,6 @@
-# Deploy Uniswap V3 Script
+# Deploy Kinetix V3 Script
 
-This package includes a CLI script for deploying the latest Uniswap V3 smart contracts to any EVM (Ethereum Virtual Machine) compatible network.
+This package includes a CLI script for deploying the latest Kinetix V3 smart contracts to any EVM (Ethereum Virtual Machine) compatible network.
 
 ## Licensing
 
@@ -93,3 +93,9 @@ Depends on the confirmation times and gas parameter. The deploy script sends up 
 ### Where should I ask questions or report issues?
 
 You can file them in `issues` on this repo and we'll try our best to respond.
+
+# Deploy Running run.ts
+
+```
+npx ts-node run.ts
+```
