@@ -1,4 +1,4 @@
-import KinetixV3Factory from '@kinetix/v3-core-smart-contracts/artifacts/contracts/KinetixV3Factory.sol/KinetixV3Factory.json'
+import KinetixV3Factory from '@kinetix/v3-core/artifacts/contracts/KinetixV3Factory.sol/KinetixV3Factory.json'
 import { Contract } from '@ethersproject/contracts'
 import { MigrationStep } from '../migrations'
 

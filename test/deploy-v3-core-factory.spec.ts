@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 
-import KinetixV3Factory from '@kinetix/v3-core-smart-contracts/artifacts/contracts/KinetixV3Factory.sol/KinetixV3Factory.json'
+import KinetixV3Factory from '@kinetix/v3-core/artifacts/contracts/KinetixV3Factory.sol/KinetixV3Factory.json'
 import { expect } from 'chai'
 import { DEPLOY_V3_CORE_FACTORY } from '../src/steps/deploy-v3-core-factory'
 import { asciiStringToBytes32 } from '../src/util/asciiStringToBytes32'
