@@ -335,6 +335,19 @@
     dotenv "^14.2.0"
     hardhat-watcher "^2.1.1"
 
+"@kinetix/v2-core@^1.0.0", "@kinetix/v2-core@^1.0.1":
+  version "1.0.1"
+  resolved "http://localhost:4873/@kinetix/v2-core/-/v2-core-1.0.1.tgz#63b6b7d256b4bde6af4f24fe6aa14153c7217df2"
+  integrity sha512-nSBO23L4uOfGqQY8fqSNwDEr4Mdwz+nGedBLWzrioymxE6Zxga+Im83nKEVIz9NnS0vvJstgmsbZ5pazpa3CDA==
+
+"@kinetix/v2-periphery@^1.0.1":
+  version "1.0.1"
+  resolved "http://localhost:4873/@kinetix/v2-periphery/-/v2-periphery-1.0.1.tgz#d8adaf2f134c5f8334cc58eb3bac41b5b24b50ac"
+  integrity sha512-5VBWAY9DRtN6vC9waoVmvVQUcyTePS28FRnwWOvbSVR9loRZ1m/c/5adKxb4rQBE8Yri572uT8hIvZfme309sg==
+  dependencies:
+    "@kinetix/v2-core" "^1.0.0"
+    "@uniswap/lib" "4.0.1-alpha"
+
 "@kinetix/v3-core@^1.0.0":
   version "1.0.0"
   resolved "http://localhost:4873/@kinetix/v3-core/-/v3-core-1.0.0.tgz#abdcfe82bc24ab79b7f78608a64982f0961c2a99"
@@ -416,7 +429,7 @@
   resolved "http://localhost:4873/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==
 
-"@uniswap/lib@^4.0.1-alpha":
+"@uniswap/lib@4.0.1-alpha", "@uniswap/lib@^4.0.1-alpha":
   version "4.0.1-alpha"
   resolved "http://localhost:4873/@uniswap/lib/-/lib-4.0.1-alpha.tgz#2881008e55f075344675b3bca93f020b028fbd02"
   integrity sha512-f6UIliwBbRsgVLxIaBANF6w09tYqc6Y/qXdsrbEmXHyFA7ILiKrIwRFXe1yOg8M3cksgVsO9N7yuL2DdCGQKBA==

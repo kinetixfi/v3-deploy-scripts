@@ -22,6 +22,7 @@ const config = {
   confirmations: 1,
   nativeCurrencyLabelBytes: asciiStringToBytes32('KAVA'),
   weth9Address: getAddress('0xc86c7C0eFbd6A49B35E8714C5f59D99De09A225b'), // WKAVA
+  admin: getAddress('0xd81c94cF5528eBc3d2C438c8e0a006822c1Ac93C'),
   v2CoreFactoryAddress: AddressZero,
   ownerAddress: ACCOUNT, // Deployer
   privateKey: PRIVATE_KEY, // Deployer's private key
@@ -58,6 +59,7 @@ async function run() {
     v2CoreFactoryAddress: config.v2CoreFactoryAddress,
     ownerAddress: config.ownerAddress,
     weth9Address: config.weth9Address,
+    admin: config.admin,
     initialState: state,
     onStateChange,
   })
@@ -68,19 +70,17 @@ async function run() {
 
     // wait 15 minutes for any transactions sent in the step
     await Promise.all(
-      result.map(
-        (stepResult): Promise<TransactionReceipt | true> => {
-          if (stepResult.hash) {
-            return wallet.provider.waitForTransaction(
-              stepResult.hash,
-              config.confirmations,
-              /* 15 minutes */ 1000 * 60 * 15
-            )
-          } else {
-            return Promise.resolve(true)
-          }
+      result.map((stepResult): Promise<TransactionReceipt | true> => {
+        if (stepResult.hash) {
+          return wallet.provider.waitForTransaction(
+            stepResult.hash,
+            config.confirmations,
+            /* 15 minutes */ 1000 * 60 * 15
+          )
+        } else {
+          return Promise.resolve(true)
         }
-      )
+      })
     )
   }
 

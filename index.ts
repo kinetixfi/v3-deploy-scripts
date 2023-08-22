@@ -121,6 +121,7 @@ async function run() {
     ownerAddress,
     weth9Address,
     initialState: state,
+    admin: '',
     onStateChange,
   })
 
@@ -130,15 +131,13 @@ async function run() {
 
     // wait 15 minutes for any transactions sent in the step
     await Promise.all(
-      result.map(
-        (stepResult): Promise<TransactionReceipt | true> => {
-          if (stepResult.hash) {
-            return wallet.provider.waitForTransaction(stepResult.hash, confirmations, /* 15 minutes */ 1000 * 60 * 15)
-          } else {
-            return Promise.resolve(true)
-          }
+      result.map((stepResult): Promise<TransactionReceipt | true> => {
+        if (stepResult.hash) {
+          return wallet.provider.waitForTransaction(stepResult.hash, confirmations, /* 15 minutes */ 1000 * 60 * 15)
+        } else {
+          return Promise.resolve(true)
         }
-      )
+      })
     )
   }
 

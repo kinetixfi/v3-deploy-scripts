@@ -17,24 +17,30 @@ import { DEPLOY_V3_STAKER } from './steps/deploy-v3-staker'
 import { DEPLOY_V3_SWAP_ROUTER_02 } from './steps/deploy-v3-swap-router-02'
 import { TRANSFER_PROXY_ADMIN } from './steps/transfer-proxy-admin'
 import { TRANSFER_V3_CORE_FACTORY_OWNER } from './steps/transfer-v3-core-factory-owner'
+import { DEPLOY_V2_CORE_FACTORY } from './steps/deploy-v2-core-factory'
+import { DEPLOY_V2_ROUTER_02 } from './steps/deploy-v2-router02'
+import { DEPLOY_PERMIT2 } from './steps/deploy-permit2'
 
 const MIGRATION_STEPS: MigrationStep[] = [
   // must come first, for address calculations
-  DEPLOY_V3_CORE_FACTORY,
-  ADD_1BP_FEE_TIER,
-  DEPLOY_MULTICALL2,
-  DEPLOY_PROXY_ADMIN,
-  DEPLOY_TICK_LENS,
-  DEPLOY_NFT_DESCRIPTOR_LIBRARY_V1_3_0,
-  DEPLOY_NFT_POSITION_DESCRIPTOR_V1_3_0,
-  DEPLOY_TRANSPARENT_PROXY_DESCRIPTOR,
-  DEPLOY_NONFUNGIBLE_POSITION_MANAGER,
-  DEPLOY_V3_MIGRATOR,
-  TRANSFER_V3_CORE_FACTORY_OWNER,
-  DEPLOY_V3_STAKER,
-  DEPLOY_QUOTER_V2,
-  DEPLOY_V3_SWAP_ROUTER_02,
-  TRANSFER_PROXY_ADMIN,
+  DEPLOY_PERMIT2,
+  DEPLOY_V2_CORE_FACTORY,
+  DEPLOY_V2_ROUTER_02,
+  // DEPLOY_V3_CORE_FACTORY,
+  // ADD_1BP_FEE_TIER,
+  // DEPLOY_MULTICALL2,
+  // DEPLOY_PROXY_ADMIN,
+  // DEPLOY_TICK_LENS,
+  // DEPLOY_NFT_DESCRIPTOR_LIBRARY_V1_3_0,
+  // DEPLOY_NFT_POSITION_DESCRIPTOR_V1_3_0,
+  // DEPLOY_TRANSPARENT_PROXY_DESCRIPTOR,
+  // DEPLOY_NONFUNGIBLE_POSITION_MANAGER,
+  // DEPLOY_V3_MIGRATOR,
+  // TRANSFER_V3_CORE_FACTORY_OWNER,
+  // DEPLOY_V3_STAKER,
+  // DEPLOY_QUOTER_V2,
+  // DEPLOY_V3_SWAP_ROUTER_02,
+  // TRANSFER_PROXY_ADMIN,
 ]
 
 export default function deploy({
@@ -46,6 +52,7 @@ export default function deploy({
   nativeCurrencyLabelBytes,
   v2CoreFactoryAddress,
   ownerAddress,
+  admin,
 }: {
   signer: Signer
   gasPrice: number | undefined
@@ -53,6 +60,7 @@ export default function deploy({
   nativeCurrencyLabelBytes: string
   v2CoreFactoryAddress: string
   ownerAddress: string
+  admin: string
   initialState: MigrationState
   onStateChange: (newState: MigrationState) => Promise<void>
 }): AsyncGenerator<StepOutput[], void, void> {
@@ -61,7 +69,7 @@ export default function deploy({
 
   return migrate({
     steps: MIGRATION_STEPS,
-    config: { gasPrice, signer, weth9Address, nativeCurrencyLabelBytes, v2CoreFactoryAddress, ownerAddress },
+    config: { gasPrice, signer, weth9Address, nativeCurrencyLabelBytes, v2CoreFactoryAddress, ownerAddress, admin },
     initialState,
     onStateChange,
   })
