@@ -7,6 +7,10 @@ import fs from 'fs'
 import deploy from './src/deploy'
 import { MigrationState } from './src/migrations'
 import { asciiStringToBytes32 } from './src/util/asciiStringToBytes32'
+import { bytecode } from '@kinetix/v2-core/build/KinetixV2Pair.json'
+//import { bytecode as v3PoolBytecode } from '@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json'
+import { bytecode as v3PoolBytecode } from '@kinetix/v3-core/artifacts/contracts/KinetixV3Pool.sol/KinetixV3Pool.json'
+import { keccak256 } from '@ethersproject/solidity'
 
 require('dotenv').config()
 
@@ -49,6 +53,12 @@ const onStateChange = async (newState: MigrationState): Promise<void> => {
 
 async function run() {
   const wallet = new Wallet(config.privateKey, new JsonRpcProvider({ url: config.rpc }))
+
+  const COMPUTED_INIT_CODE_HASH = keccak256(['bytes'], [`0x${bytecode}`])
+
+  const POOL_INIT_CODE_HASH = keccak256(['bytes'], [`${v3PoolBytecode}`])
+
+  console.log({ COMPUTED_INIT_CODE_HASH, POOL_INIT_CODE_HASH })
 
   let step = 1
   const results = []

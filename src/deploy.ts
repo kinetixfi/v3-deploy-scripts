@@ -20,12 +20,14 @@ import { TRANSFER_V3_CORE_FACTORY_OWNER } from './steps/transfer-v3-core-factory
 import { DEPLOY_V2_CORE_FACTORY } from './steps/deploy-v2-core-factory'
 import { DEPLOY_V2_ROUTER_02 } from './steps/deploy-v2-router02'
 import { DEPLOY_PERMIT2 } from './steps/deploy-permit2'
+import { DEPLOY_UNSUPPORTED } from './steps/deploy-unsupported'
 
 const MIGRATION_STEPS: MigrationStep[] = [
   // must come first, for address calculations
   DEPLOY_PERMIT2,
   DEPLOY_V2_CORE_FACTORY,
   DEPLOY_V2_ROUTER_02,
+  DEPLOY_UNSUPPORTED,
   // DEPLOY_V3_CORE_FACTORY,
   // ADD_1BP_FEE_TIER,
   // DEPLOY_MULTICALL2,
