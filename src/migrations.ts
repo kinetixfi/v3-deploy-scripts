@@ -6,6 +6,7 @@ export interface MigrationState {
   readonly v3CoreFactoryAddress?: string
   readonly v2CoreFactoryAddress?: string
   readonly v2Router02Address?: string
+  readonly tokenValidator?: string
   readonly permit2Address?: string
   readonly swapRouter02?: string
   readonly nftDescriptorLibraryAddressV1_3_0?: string
